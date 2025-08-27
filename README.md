@@ -42,7 +42,7 @@ The application follows a layered architecture pattern:
 - ASP.NET Core Web API
 - Entity Framework Core 9.0
 - SQLite Database
-- EPPlus for Excel generation
+- ClosedXML for Excel generation
 - xUnit for Testing
 - Bootstrap 5 for Styling
 
@@ -55,8 +55,8 @@ The application follows a layered architecture pattern:
 
 1. **Clone the repository**:
    ```bash
-   git clone <repository-url>
-   cd Test-Repo
+   git clone https://github.com/pattygcoding/Demo-Project.git
+   cd Demo-Project
    ```
 
 2. **Restore dependencies**:

@@ -271,6 +271,7 @@ ehthumbs.db
 # Excel export files
 *_report.xlsx
 test_report.xlsx
+test_closedxml_report.xlsx
 
 # Local environment files
 .env

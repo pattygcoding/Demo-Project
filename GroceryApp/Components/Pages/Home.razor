@@ -1,0 +1,177 @@
+﻿@page "/"
+
+<PageTitle>Home - Grocery Shopping App</PageTitle>
+
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="jumbotron bg-primary text-white p-5 rounded mb-4">
+                <h1 class="display-4">🛒 Grocery Shopping App</h1>
+                <p class="lead">A complete full-stack .NET 9 Blazor Server application for managing grocery items with comprehensive features and modern architecture.</p>
+                <hr class="my-4">
+                <p>Streamline your grocery management with our intuitive interface, organized by categories, and powerful search capabilities.</p>
+                <a class="btn btn-success btn-lg" href="/groceries" role="button">
+                    <i class="bi bi-basket3-fill"></i> View Groceries
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2>✨ Key Features</h2>
+            <div class="row">
+                <div class="col-md-6 col-lg-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="bi bi-plus-circle text-success"></i> Add Items
+                            </h5>
+                            <p class="card-text">Create new grocery items with name, category, price, and stock information.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="bi bi-grid-3x3-gap text-primary"></i> Organized Categories
+                            </h5>
+                            <p class="card-text">View all grocery items organized by category: Fruits, Vegetables, Meats, Cheeses, and Breads.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="bi bi-pencil-square text-warning"></i> Full CRUD Operations
+                            </h5>
+                            <p class="card-text">Create, read, update, and delete grocery items with intuitive forms and confirmations.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="bi bi-database text-info"></i> Data Persistence
+                            </h5>
+                            <p class="card-text">All data is persisted to a SQLite database using Entity Framework Core with automatic migrations.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="bi bi-check2-circle text-success"></i> Form Validation
+                            </h5>
+                            <p class="card-text">Comprehensive form validation with data annotations ensures data integrity and user feedback.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="bi bi-arrow-repeat text-secondary"></i> REST API
+                            </h5>
+                            <p class="card-text">Full REST API endpoints available for integration with other applications and services.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>🏗️ Architecture & Tech Stack</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled">
+                        <li><strong>.NET 9</strong> - Modern framework with latest features</li>
+                        <li><strong>Blazor Server</strong> - Interactive web UI with C#</li>
+                        <li><strong>ASP.NET Core Web API</strong> - RESTful API endpoints</li>
+                        <li><strong>Entity Framework Core 9.0</strong> - Modern ORM with SQLite</li>
+                        <li><strong>Bootstrap 5</strong> - Responsive, modern styling</li>
+                        <li><strong>Repository Pattern</strong> - Clean architecture separation</li>
+                        <li><strong>Dependency Injection</strong> - SOLID principles implementation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>📊 Seeded Data</h3>
+                </div>
+                <div class="card-body">
+                    <p>The application comes pre-loaded with <strong>50 grocery items</strong> across 5 categories:</p>
+                    <ul>
+                        <li><strong>🍎 Fruits</strong> - Apple, Banana, Orange, Strawberry, Grapes, Pineapple, Mango, Kiwi, Blueberry, Peach</li>
+                        <li><strong>🥕 Vegetables</strong> - Carrot, Broccoli, Spinach, Tomato, Cucumber, Bell Pepper, Onion, Garlic, Potato, Lettuce</li>
+                        <li><strong>🥩 Meats</strong> - Chicken Breast, Ground Beef, Salmon Fillet, Pork Chops, Turkey Breast, Beef Steak, Ground Turkey, Bacon, Ham, Lamb Chops</li>
+                        <li><strong>🧀 Cheeses</strong> - Cheddar, Mozzarella, Swiss, Brie, Gouda, Parmesan, Blue, Feta, Cream, Cottage</li>
+                        <li><strong>🍞 Breads</strong> - White Bread, Whole Wheat Bread, Sourdough, Rye Bread, Baguette, Ciabatta, Pita Bread, Bagels, Croissant, Dinner Rolls</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3>🚀 Quick Actions</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <a href="/groceries" class="btn btn-primary btn-lg w-100">
+                                <i class="bi bi-list"></i><br>
+                                View All Items
+                            </a>
+                            <small class="text-muted d-block mt-2">Browse all grocery items organized by category</small>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <a href="/groceries/create" class="btn btn-success btn-lg w-100">
+                                <i class="bi bi-plus-square"></i><br>
+                                Add New Item
+                            </a>
+                            <small class="text-muted d-block mt-2">Create a new grocery item with details</small>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <a href="/api/groceries" class="btn btn-info btn-lg w-100" target="_blank">
+                                <i class="bi bi-code"></i><br>
+                                View API
+                            </a>
+                            <small class="text-muted d-block mt-2">Explore the REST API endpoints</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="alert alert-info">
+                <h4 class="alert-heading">🎯 Perfect for Learning</h4>
+                <p>This application demonstrates modern .NET development practices including:</p>
+                <ul class="mb-0">
+                    <li>Clean architecture with separation of concerns</li>
+                    <li>Repository and service layer patterns</li>
+                    <li>Entity Framework Code-First approach</li>
+                    <li>Blazor Server with interactive components</li>
+                    <li>Form validation and error handling</li>
+                    <li>RESTful API design principles</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

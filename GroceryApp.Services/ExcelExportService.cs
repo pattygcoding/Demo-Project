@@ -6,11 +6,29 @@ namespace GroceryApp.Services;
 
 public interface IExcelExportService
 {
+    /// <summary>
+    /// Generates a comprehensive Excel report with 5 worksheets containing grocery analytics.
+    /// </summary>
+    /// <param name="groceries">The collection of grocery items to include in the report.</param>
+    /// <returns>A byte array representing the Excel file content.</returns>
+    /// <remarks>
+    /// The generated Excel file contains the following worksheets:
+    /// 1. Key Metrics - Summary of key performance indicators
+    /// 2. Profit by Category - Profit analysis grouped by product category
+    /// 3. Top Profitable Items - Top 10 most profitable items
+    /// 4. Stock Analysis - Analysis of stock levels (high, low, out of stock)
+    /// 5. Price Range Analysis - Analysis by price ranges
+    /// </remarks>
     Task<byte[]> GenerateReportExcelAsync(IEnumerable<GroceryItemDto> groceries);
 }
 
 public class ExcelExportService : IExcelExportService
 {
+    /// <summary>
+    /// Generates a comprehensive Excel report with 5 worksheets containing grocery analytics.
+    /// </summary>
+    /// <param name="groceries">The collection of grocery items to include in the report.</param>
+    /// <returns>A byte array representing the Excel file content.</returns>
     public async Task<byte[]> GenerateReportExcelAsync(IEnumerable<GroceryItemDto> groceries)
     {
         using var workbook = new XLWorkbook();
@@ -36,6 +54,15 @@ public class ExcelExportService : IExcelExportService
         return await Task.FromResult(stream.ToArray());
     }
 
+    /// <summary>
+    /// Creates the Key Metrics worksheet containing summary statistics and key performance indicators.
+    /// </summary>
+    /// <param name="workbook">The Excel workbook to add the worksheet to.</param>
+    /// <param name="groceries">The collection of grocery items to analyze.</param>
+    /// <remarks>
+    /// This worksheet includes total profit potential, average profit per item, total items in stock, and product categories count.
+    /// Each metric is color-coded for visual distinction.
+    /// </remarks>
     private void CreateKeyMetricsSheet(XLWorkbook workbook, List<GroceryItemDto> groceries)
     {
         var worksheet = workbook.Worksheets.Add("Key Metrics");
@@ -83,6 +110,15 @@ public class ExcelExportService : IExcelExportService
         worksheet.Columns().AdjustToContents();
     }
 
+    /// <summary>
+    /// Creates the Profit by Category worksheet showing profit analysis grouped by product categories.
+    /// </summary>
+    /// <param name="workbook">The Excel workbook to add the worksheet to.</param>
+    /// <param name="groceries">The collection of grocery items to analyze.</param>
+    /// <remarks>
+    /// This worksheet shows category name, item count, total stock, average profit, and total potential profit.
+    /// Data is ordered by total potential profit in descending order.
+    /// </remarks>
     private void CreateProfitByCategorySheet(XLWorkbook workbook, List<GroceryItemDto> groceries)
     {
         var worksheet = workbook.Worksheets.Add("Profit by Category");
@@ -132,6 +168,15 @@ public class ExcelExportService : IExcelExportService
         worksheet.Columns().AdjustToContents();
     }
 
+    /// <summary>
+    /// Creates the Top Profitable Items worksheet showing the 10 most profitable grocery items.
+    /// </summary>
+    /// <param name="workbook">The Excel workbook to add the worksheet to.</param>
+    /// <param name="groceries">The collection of grocery items to analyze.</param>
+    /// <remarks>
+    /// This worksheet displays item name, category, profit amount, and profit margin percentage.
+    /// Items are ordered by profit amount in descending order.
+    /// </remarks>
     private void CreateTopProfitableItemsSheet(XLWorkbook workbook, List<GroceryItemDto> groceries)
     {
         var worksheet = workbook.Worksheets.Add("Top Profitable Items");
@@ -174,6 +219,15 @@ public class ExcelExportService : IExcelExportService
         worksheet.Columns().AdjustToContents();
     }
 
+    /// <summary>
+    /// Creates the Stock Analysis worksheet showing inventory levels categorized by stock availability.
+    /// </summary>
+    /// <param name="workbook">The Excel workbook to add the worksheet to.</param>
+    /// <param name="groceries">The collection of grocery items to analyze.</param>
+    /// <remarks>
+    /// This worksheet categorizes items into High Stock (>5), Low Stock (1-5), and Out of Stock (0).
+    /// Each category shows item count, total stock, and total value with color-coded rows.
+    /// </remarks>
     private void CreateStockAnalysisSheet(XLWorkbook workbook, List<GroceryItemDto> groceries)
     {
         var worksheet = workbook.Worksheets.Add("Stock Analysis");
@@ -223,6 +277,15 @@ public class ExcelExportService : IExcelExportService
         worksheet.Columns().AdjustToContents();
     }
 
+    /// <summary>
+    /// Creates the Price Range Analysis worksheet showing analytics grouped by price ranges.
+    /// </summary>
+    /// <param name="workbook">The Excel workbook to add the worksheet to.</param>
+    /// <param name="groceries">The collection of grocery items to analyze.</param>
+    /// <remarks>
+    /// This worksheet analyzes items in price ranges: $0-$1, $1-$3, $3-$5, $5-$10, $10+.
+    /// For each range, it shows item count, average cost, average profit, and profit margin percentage.
+    /// </remarks>
     private void CreatePriceRangeAnalysisSheet(XLWorkbook workbook, List<GroceryItemDto> groceries)
     {
         var worksheet = workbook.Worksheets.Add("Price Range Analysis");

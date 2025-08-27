@@ -5,14 +5,40 @@ using System.Reflection;
 
 namespace GroceryApp.Data;
 
+/// <summary>
+/// Entity Framework Core database context for the Grocery application.
+/// Manages database connections, entity configurations, and provides access to grocery items data.
+/// </summary>
 public class GroceryDbContext : DbContext
 {
+    /// <summary>
+    /// Initializes a new instance of the GroceryDbContext class.
+    /// </summary>
+    /// <param name="options">The database context options including connection string configuration.</param>
     public GroceryDbContext(DbContextOptions<GroceryDbContext> options) : base(options)
     {
     }
 
+    /// <summary>
+    /// Gets or sets the DbSet for grocery items in the database.
+    /// Provides access to all CRUD operations on grocery items through Entity Framework Core.
+    /// </summary>
     public DbSet<GroceryItem> GroceryItems { get; set; } = null!;
 
+    /// <summary>
+    /// Configures the database model and entity relationships using the model builder.
+    /// Defines entity configurations, constraints, and seeds initial data into the database.
+    /// </summary>
+    /// <param name="modelBuilder">The model builder used to construct the database model.</param>
+    /// <remarks>
+    /// Configures the GroceryItem entity with:
+    /// - Primary key on Id property
+    /// - Required Name field with 100 character limit
+    /// - Required Category field with enum conversion
+    /// - Required Price and CostToProduce fields with 18,2 decimal precision
+    /// - Required Stock and CreatedUtc fields
+    /// Also seeds the database with initial grocery items from embedded JSON data.
+    /// </remarks>
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -32,6 +58,16 @@ public class GroceryDbContext : DbContext
         SeedData(modelBuilder);
     }
 
+    /// <summary>
+    /// Seeds the database with initial grocery item data from an embedded JSON file.
+    /// Loads seed data from SeedData.json and creates grocery items for initial database population.
+    /// </summary>
+    /// <param name="modelBuilder">The model builder used to seed entity data.</param>
+    /// <remarks>
+    /// Reads seed data from the embedded resource file "GroceryApp.Data.SeedData.json".
+    /// Each seed item is converted to a GroceryItem entity with auto-generated IDs and UTC timestamps.
+    /// Only processes items with valid category enum values to ensure data integrity.
+    /// </remarks>
     private void SeedData(ModelBuilder modelBuilder)
     {
         var groceryItems = new List<GroceryItem>();

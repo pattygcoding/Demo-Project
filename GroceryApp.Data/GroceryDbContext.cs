@@ -76,7 +76,7 @@ public class GroceryDbContext : DbContext
         // Read seed data from JSON file
         var assembly = Assembly.GetExecutingAssembly();
         var resourceName = "GroceryApp.Data.SeedData.json";
-        
+
         using var stream = assembly.GetManifestResourceStream(resourceName);
         if (stream != null)
         {
@@ -104,7 +104,7 @@ public class GroceryDbContext : DbContext
                 }
             }
         }
-        
+
         // Fallback to hardcoded data if JSON reading fails
         if (!groceryItems.Any())
         {

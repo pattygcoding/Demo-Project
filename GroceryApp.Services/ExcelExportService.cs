@@ -66,13 +66,13 @@ public class ExcelExportService : IExcelExportService
     private void CreateKeyMetricsSheet(XLWorkbook workbook, List<GroceryItemDto> groceries)
     {
         var worksheet = workbook.Worksheets.Add("Key Metrics");
-        
+
         // Title
         worksheet.Cell(1, 1).Value = "Grocery Reports - Key Metrics Summary";
         worksheet.Cell(1, 1).Style.Font.FontSize = 16;
         worksheet.Cell(1, 1).Style.Font.Bold = true;
         worksheet.Range(1, 1, 1, 3).Merge();
-        
+
         // Calculate metrics (same as in Reports.razor)
         var totalProfitPotential = groceries.Sum(g => (g.Price - g.CostToProduce) * g.Stock);
         var averageProfitPerItem = groceries.Average(g => g.Price - g.CostToProduce);
@@ -122,7 +122,7 @@ public class ExcelExportService : IExcelExportService
     private void CreateProfitByCategorySheet(XLWorkbook workbook, List<GroceryItemDto> groceries)
     {
         var worksheet = workbook.Worksheets.Add("Profit by Category");
-        
+
         // Calculate category stats (same logic as in Reports.razor)
         var categoryStats = groceries
             .GroupBy(g => g.Category)
@@ -180,7 +180,7 @@ public class ExcelExportService : IExcelExportService
     private void CreateTopProfitableItemsSheet(XLWorkbook workbook, List<GroceryItemDto> groceries)
     {
         var worksheet = workbook.Worksheets.Add("Top Profitable Items");
-        
+
         // Get top profitable items (same logic as in Reports.razor)
         var topProfitableItems = groceries
             .OrderByDescending(g => g.Price - g.CostToProduce)
@@ -231,7 +231,7 @@ public class ExcelExportService : IExcelExportService
     private void CreateStockAnalysisSheet(XLWorkbook workbook, List<GroceryItemDto> groceries)
     {
         var worksheet = workbook.Worksheets.Add("Stock Analysis");
-        
+
         // Stock analysis (same logic as in Reports.razor)
         var highStockItems = groceries.Where(g => g.Stock > 5).ToList();
         var lowStockItems = groceries.Where(g => g.Stock >= 1 && g.Stock <= 5).ToList();
@@ -289,7 +289,7 @@ public class ExcelExportService : IExcelExportService
     private void CreatePriceRangeAnalysisSheet(XLWorkbook workbook, List<GroceryItemDto> groceries)
     {
         var worksheet = workbook.Worksheets.Add("Price Range Analysis");
-        
+
         // Price range analysis (same logic as in Reports.razor)
         var priceRanges = new[]
         {

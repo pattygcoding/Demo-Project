@@ -54,8 +54,8 @@ public class ReportsController : ControllerBase
 
             var fileName = $"GroceryReport_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx";
 
-            return File(excelData, 
-                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", 
+            return File(excelData,
+                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
                 fileName);
         }
         catch (Exception ex)

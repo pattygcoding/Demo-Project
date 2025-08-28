@@ -199,9 +199,9 @@ public class GroceryServiceTests
         Assert.Equal(0.50m, result.CostToProduce);
         Assert.Equal(10, result.Stock);
 
-        await _mockRepository.Received(1).CreateAsync(Arg.Is<GroceryItem>(x => 
-            x.Name == "Apple" && 
-            x.Category == Category.Fruit && 
+        await _mockRepository.Received(1).CreateAsync(Arg.Is<GroceryItem>(x =>
+            x.Name == "Apple" &&
+            x.Category == Category.Fruit &&
             x.Price == 1.99m &&
             x.CostToProduce == 0.50m &&
             x.Stock == 10));
@@ -331,7 +331,7 @@ public class GroceryServiceTests
         await _service.CreateGroceryAsync(createDto);
 
         // Assert
-        await _mockRepository.Received(1).CreateAsync(Arg.Is<GroceryItem>(x => 
+        await _mockRepository.Received(1).CreateAsync(Arg.Is<GroceryItem>(x =>
             x.CreatedUtc != default(DateTime)));
     }
 
@@ -374,9 +374,9 @@ public class GroceryServiceTests
         Assert.Equal(2.99m, result.Price);
         Assert.Equal(1.00m, result.CostToProduce);
         Assert.Equal(5, result.Stock);
-        
-        await _mockRepository.Received(1).UpdateAsync(1, Arg.Is<GroceryItem>(x => 
-            x.Name == "Updated Apple" && 
+
+        await _mockRepository.Received(1).UpdateAsync(1, Arg.Is<GroceryItem>(x =>
+            x.Name == "Updated Apple" &&
             x.Price == 2.99m &&
             x.CostToProduce == 1.00m &&
             x.Stock == 5));
@@ -469,7 +469,7 @@ public class GroceryServiceTests
         await _service.UpdateGroceryAsync(1, updateDto);
 
         // Assert
-        await _mockRepository.Received(1).UpdateAsync(1, Arg.Is<GroceryItem>(x => 
+        await _mockRepository.Received(1).UpdateAsync(1, Arg.Is<GroceryItem>(x =>
             x.Name == "Modified Test" &&
             x.Category == Category.Vegetable &&
             x.Price == 2.99m &&
@@ -648,7 +648,7 @@ public class GroceryServiceTests
     {
         // Arrange & Act & Assert for each category
         var categories = Enum.GetValues<Category>();
-        
+
         foreach (var category in categories)
         {
             var createDto = new CreateGroceryItemDto
@@ -758,14 +758,14 @@ public class GroceryServiceTests
     public async Task GetGroceryByIdAsync_WithValidId_CallsRepositoryOnce()
     {
         // Arrange
-        var groceryItem = new GroceryItem 
-        { 
-            Id = 5, 
-            Name = "Test Item", 
-            Category = Category.Meat, 
-            Price = 10.99m, 
-            CostToProduce = 5.50m, 
-            Stock = 15 
+        var groceryItem = new GroceryItem
+        {
+            Id = 5,
+            Name = "Test Item",
+            Category = Category.Meat,
+            Price = 10.99m,
+            CostToProduce = 5.50m,
+            Stock = 15
         };
         _mockRepository.GetByIdAsync(5).Returns(groceryItem);
 
